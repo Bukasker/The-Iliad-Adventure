@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Item
+  - InteractbleSphere
+  - slot
+  - itemAmount
+  - InventoryItemIcon
   layers:
   - Default
   - TransparentFX

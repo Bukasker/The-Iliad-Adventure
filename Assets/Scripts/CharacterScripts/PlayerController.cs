@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using Object = System.Object;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,7 +11,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
 
     [SerializeField] private GameObject Player;
-    [SerializeField] private GameObject[] _enemy;
 
     [SerializeField] GameObject PlayerHands;
 
@@ -31,11 +32,17 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 movementDirection;
 
+    private Interactble interactble;
+
+    public GameObject inventoryCanvas;
+    private bool setActive = true;
+
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
         _PlayerAnimator = GetComponent<Animator>();
         Player = gameObject;
+        interactble = FindObjectOfType<Interactble>();
     }
 
     private void Update()
@@ -124,22 +131,33 @@ public class PlayerController : MonoBehaviour
             _PlayerAnimator.SetBool("isMoving", false);
         }
 
+
         if (Input.GetMouseButtonDown(0) && haveWeapon)
         {
             SwordAttack();
         }
-
         if (Input.GetMouseButtonDown(0) && !haveWeapon)
         {
             Attack();
         }
-
         if (Input.GetMouseButtonDown(1) && !haveWeapon)
         {
             StrongAttack();
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Pick();
+        }
+        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Backspace))
+        {
+            InventoryController.IsInventoryActive = setActive;
+            setActive = !setActive;
+        }
     }
-
+    void Pick()
+    {
+        interactble.RemoveFirstItemOnList();
+    }
     private void SwordAttack()
     {
         _PlayerAnimator.SetTrigger("isAttacking");

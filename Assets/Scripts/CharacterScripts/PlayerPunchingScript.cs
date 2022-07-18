@@ -12,13 +12,7 @@ namespace Assets.Scripts
         [SerializeField] private float _playerPositonModifer = 0.5f;
 
         // Events
-        public static event EventHandler<PunchedEnemyEventArgs> OnPlayerPunchedEnemy; 
-
-        // zrobimy ze event bedzie statyczny to znaczy ze jesli ktos zostal uderzony
-        // (enemy, to sprawdzi czy to on zostal uderzony a jesli tak to zaczyna napierdalac tego co uderzyl
-        // A NO TO TAK TO BEDZIE W ENEMY SCRIPT
-        // narazie chce tylko go poinformowac ze dostal wpierdol xD _ TO ROBI MÓZG XD
-
+        public static event EventHandler<PunchedEnemyEventArgs> OnPlayerPunchedEnemy;
         private void OnTriggerEnter(Collider col)
         {
             {
