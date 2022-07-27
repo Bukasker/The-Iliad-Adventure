@@ -16,5 +16,5 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 729930ae45b84574388138d0700e7691, type: 3}
   Value: 100
   Weight: 0.2
-  maxStack: 2
-  itemAmount: 2
+  maxStack: 999
+  itemAmount: 1

@@ -9,7 +9,8 @@ TagManager:
   - InteractbleSphere
   - slot
   - itemAmount
-  - InventoryItemIcon
+  - icon
+  - TrashPanel
   layers:
   - Default
   - TransparentFX

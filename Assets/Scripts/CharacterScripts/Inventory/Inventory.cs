@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour
         Instance = this;
     }
     #endregion
+
     public void Add(Item item)
     {
         if (items.Contains(item) && item.itemAmount <= item.maxStack)
@@ -28,15 +29,22 @@ public class Inventory : MonoBehaviour
             item.itemAmount += 1;
             if (items.Contains(item) && item.itemAmount > item.maxStack)
             {
-                Debug.Log("Alert: No more space in stack");
+                Debug.LogWarning("Alert: No more space in stack");
                 item.itemAmount -= 1;
                 //TODO: Throwing item
             }
         }
         else
         {
+            Debug.Log("ADDITEM");
             items.Add(item);
         }
+        onItemChangedCallback.Invoke();
+    }
+    public void Remove(Item item)
+    {
+        Debug.Log("REMOVEITEM");
+        items.Remove(item);
         onItemChangedCallback.Invoke();
     }
 }

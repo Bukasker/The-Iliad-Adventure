@@ -54,7 +54,6 @@ public class Interactble : MonoBehaviour
             FocusedItem = _interactbleObjects[0];
             itemPickUp = FocusedItem.GetComponent<ItemPickUp>();
             Inventory.Instance.Add(itemPickUp.Item);
-            Debug.Log("Added : "+ itemPickUp.Item.Name +" to Inventory");
             Destroy(FocusedItem);
             _interactbleObjects.Remove(FocusedItem);
         }

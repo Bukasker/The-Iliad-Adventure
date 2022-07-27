@@ -33,7 +33,6 @@ public class InventoryUI : MonoBehaviour
         {
             if (i < inventory.items.Count)
             {
-                Debug.Log("ADDED " + inventory.items[i]);
                 slots[i].AddItem(inventory.items[i]);
                 
                 if (inventory.items[i].itemAmount >= 2)
@@ -45,6 +44,7 @@ public class InventoryUI : MonoBehaviour
             }
             else
             {
+                itemAmountText[i].enabled = false;
                 slots[i].ClearSlot();
             }
         } 
