@@ -1,87 +1,71 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class StickToCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+
+public class StickToCursor : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public GameObject Panel;
-    public bool mouse_over;
-    public TrashUI trashUI;
-    public bool test;
-    private void Awake()
-    {
-        Panel = GameObject.FindGameObjectWithTag("TrashPanel");
-        trashUI = Panel.GetComponent<TrashUI>();
-    }
-    /*
     public Image icon;
     private Vector3 position;
     private RectTransform rectTransform;
     public bool buttonPressed;
+    public bool iconIsMoved = false;
+    public Vector3 lastPos;
 
     private void Awake()
     {
         icon = GetComponent<Image>();
         rectTransform = GetComponent<RectTransform>();
         position = rectTransform.localPosition;
+        lastPos = position;
     }
     private void Update()
     {
         if (buttonPressed)
         {
-           gameObject.transform.position = Input.mousePosition;
+            gameObject.transform.position = Input.mousePosition;
         }
         else
         {
             rectTransform.localPosition = position;
         }
+        if (lastPos != rectTransform.localPosition)
+        {
+            iconIsMoved = true;
+        }
+        else
+        {
+            iconIsMoved = false;
+        }
+    
     }
     public void OnPointerDown(PointerEventData eventData)
     {
         if (icon.sprite != null)
         {
+            lastPos = rectTransform.localPosition;
             buttonPressed = true;
         }
+        if (lastPos != rectTransform.localPosition)
+        {
+            iconIsMoved = true;
+        }
+        else
+        {
+            iconIsMoved = false;
+        }
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (icon.sprite != null)
+        if (lastPos == rectTransform.localPosition)
         {
-            buttonPressed = false;
+            iconIsMoved = false;
         }
-    }
-    */
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            var mousePostion = Input.mousePosition;
-            Panel.transform.position = mousePostion;
-            Panel.SetActive(true);
-            test = true;
-        }
-
-    }
-    private void Update()
-    {
-        if (mouse_over || trashUI.mouse_over)
-        {
-            Panel.SetActive(true);
-        }
-
-    }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        mouse_over = true;
-        Debug.Log("Mouse enter");
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        mouse_over = false;
-        Panel.SetActive(false);
-        test = false;
+        buttonPressed = false;
+        
     }
 }
 
