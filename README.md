@@ -1,1 +1,1 @@
-<h1 color="red">The Iliad Adveture</h1>
+<h1 style="color:red">The Iliad Adveture</h1>
