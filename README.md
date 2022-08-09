@@ -9,17 +9,17 @@ The Iliad Adventure is a project that I am currently working on,
 the game is intended to be an RPG set in Greece based on Sprite graphics.
 <div dir="auto">
 <h3>What I made</h3>
-<h4>Movment</h4>
-- Moving WASD
-- Jumping
-<h4>Fight</h4>
-- Strong and normal punching
-- Opponent's knockback
-<h4>Enemy AI</h4>
-- Moving to the random positon
-- Moving to the Player postion when player atack
-<h4>Inventory</h4>
-- Basic inventory with stackable slots  
-- Removing Item when player move item above trash
-- Sorting by type of item
+- Movment
+  - Moving WASD
+  - Jumping
+- Fight
+  - Strong and normal punching
+  - Opponent's knockback
+- Enemy AI
+  - Moving to the random positon
+  - Moving to the Player postion when player atack
+- Inventory
+  - Basic inventory with stackable slots  
+  - Removing Item when player move item above trash
+  - Sorting by type of item
 </div>
