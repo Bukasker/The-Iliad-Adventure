@@ -7,7 +7,7 @@
 
 The Iliad Adventure is a project that I am currently working on,
 the game is intended to be an RPG set in Greece based on Sprite graphics.
-
+<div dir="auto">
 <h3>What I made</h3>
 <h4>Movment</h4>
 - Moving WASD
@@ -22,4 +22,4 @@ the game is intended to be an RPG set in Greece based on Sprite graphics.
 - Basci inventory with stackable slots
 - Removing Item when player move item above trash
 - Sorting by type of item
-
+</div>
