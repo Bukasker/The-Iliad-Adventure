@@ -30,5 +30,5 @@
   <div dir="auto">
   <img src="https://i.postimg.cc/Hk5HkL6C/screen1.png" width="15%" ></img> 
   <img src="https://i.postimg.cc/cLkGNd6Q/screen2.png" width="15%" ></img>  
-  <img src="https://i.postimg.cc/RZkGtYDk/Inventory.png" width="15%" ></img>  
+  <img src="https://i.postimg.cc/RZkGtYDk/Inventory.png"  ></img>  
   </div>
