@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 986fde8840a35464ca9ed91534d89404, type: 3}
-  m_Name: PotionOfPoison
+  m_Script: {fileID: 11500000, guid: 239dc79981f971949b98c28197ab1142, type: 3}
+  m_Name: Stick
   m_EditorClassIdentifier: 
-  Name: PotionOfPoison
-  Icon: {fileID: 21300000, guid: 729930ae45b84574388138d0700e7691, type: 3}
-  Value: 100
-  Weight: 0.2
-  maxStack: 999
-  itemAmount: 1
+  Damage: 5
+  Range: 1
+  Speed: 1

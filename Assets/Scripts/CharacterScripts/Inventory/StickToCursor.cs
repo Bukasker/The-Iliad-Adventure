@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,16 +6,17 @@ using UnityEngine.UI;
 public class StickToCursor : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public Image icon;
+    [SerializeField] private GameObject IconGameObject;
     private Vector3 position;
     private RectTransform rectTransform;
     public bool buttonPressed;
     public bool iconIsMoved = false;
-    public Vector3 lastPos;
+    private Vector3 lastPos;
 
     private void Awake()
     {
         icon = GetComponent<Image>();
-        rectTransform = GetComponent<RectTransform>();
+        rectTransform = IconGameObject.GetComponent<RectTransform>();
         position = rectTransform.localPosition;
         lastPos = position;
     }
@@ -24,7 +24,7 @@ public class StickToCursor : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         if (buttonPressed)
         {
-            gameObject.transform.position = Input.mousePosition;
+            IconGameObject.transform.position = Input.mousePosition;
         }
         else
         {
@@ -38,24 +38,15 @@ public class StickToCursor : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             iconIsMoved = false;
         }
-    
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        rectTransform.SetAsLastSibling();
         if (icon.sprite != null)
         {
             lastPos = rectTransform.localPosition;
             buttonPressed = true;
         }
-        if (lastPos != rectTransform.localPosition)
-        {
-            iconIsMoved = true;
-        }
-        else
-        {
-            iconIsMoved = false;
-        }
-
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -65,7 +56,6 @@ public class StickToCursor : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             iconIsMoved = false;
         }
         buttonPressed = false;
-        
     }
 }
 

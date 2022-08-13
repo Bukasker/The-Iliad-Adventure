@@ -83,18 +83,13 @@ public class EnemyAI : MonoBehaviour
         InvokeRepeating(nameof(InvokeRandomBehaviour), 0f, _randomBehaviourInterval);
         
 
-        //TODO: potrzebujemy zamienic InvokeRepeating na StartCoroutine po to by moc j¹ pozniej przerwac gdy enemy dostanie wpierdol i musi zrobic kontratak
-        //TODO: zrobimy tak, ¿e gdy to ten enemy, zosta³ zaatakowany to zatrzymuejym jego zachowania
-        //TODO: potrzebujemy ustalic jak daleko atakujacy musi byc od kraba by ten przesta³ go gonic
-        //TODO: karzemy enemy biec za graczem
-        //TODO: karzemy enemy atakowac gracza gdy jest blisko niego
-        //TODO: jesli odleglosc od atakujecgo jest wieksza niz ustalona max to zaprzestajemy akcji i rozkazujemy mu wrocic do startowej pozycji
-        //TODO: znów uruchamiamy coroutine RandomizeBehaviour
-
-        // zamiast podawac cos w stringu uzywam nameof poniewaz gdybym teraz zmienil nazwe 
-        // tej metody to w stringu ona sie nie zmieni ani nawet bledu Ci nie pokaze a w tkai sposob jak wyzej podkresli ze takiej metody nie ma albo cos
-        // void Penis() {}
-        // nameof(Penis) == "Penis" TO JEST TO SAMO
+        //TODO: potrzebuje zamienic InvokeRepeating na StartCoroutine po to by móc j¹ pozniej przerwac gdy enemy zostanie uderzony i musi zrobic kontratak
+        //TODO: jeŸeli enemy, zosta³ zaatakowany to zatrzymaæ jego zachowania
+        //TODO: potrzebuje ustalic jak daleko atakujacy musi byc od kraba by ten przesta³ go gonic
+        //TODO: enemy musi biec za graczem
+        //TODO: enemy  musi atakowac gracza gdy jest blisko niego
+        //TODO: jesli odleglosc od atakujecgo jest wieksza niz ustalona max to zaprzestaje akcji i ma wrocic do startowej pozycji
+        //TODO: znów uruchamiæ coroutine RandomizeBehaviour
     }
 
     private Vector3 GetNewTargetPosition()
@@ -120,8 +115,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (_isMoving) return;
 
-        // TODO: jeœli zosta³ zaatakowany, przerwij wszyystkie akcje i napierdalaj sie z atakujacym
-        // to nie moze byæ w invoke random behaviour dlatego, ¿e to nie jest random behaviour tylko konkretne zachowanie xD
+        // TODO: jeœli zosta³ zaatakowany, przerwij wszyystkie akcje i walcz z atakujacym
+        // to nie moze byæ w invoke random behaviour dlatego, ¿e to nie jest random behaviour tylko konkretne zachowanie 
 
         var values = Enum.GetValues(typeof(BehaviourType));
         var randomBehaviourType = (BehaviourType)values.GetValue(_rand.Next(0, values.Length - 1));
