@@ -128,10 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPressed: 0
-  icon: {fileID: 4097272980619592427}
+  _icon: {fileID: 4097272980619592427}
   item: {fileID: 0}
   ItemRemoved: 0
   stickToCursor: {fileID: 8550619711684867960}
+  _potionSlot: []
 --- !u!1 &7103127746777080152
 GameObject:
   m_ObjectHideFlags: 0

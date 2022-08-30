@@ -101,7 +101,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3676847532255279447}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -127,11 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a36203caee3034e8260c078c81db11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPressed: 0
   icon: {fileID: 4393217170127826486}
   item: {fileID: 0}
-  ItemRemoved: 0
   stickToCursor: {fileID: 8251228932319435685}
+  _itemAmountText: {fileID: 7054329446653160112}
+  _potionSlot: []
 --- !u!1 &6950344254350118195
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,8 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba925143fc887964fba6d24365883c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 4393217170127826486}
-  IconGameObject: {fileID: 2799786191252718249}
+  _icon: {fileID: 4393217170127826486}
+  _iconGameObjcet: {fileID: 2799786191252718249}
   buttonPressed: 0
   iconIsMoved: 0
 --- !u!1 &7401884382910270853

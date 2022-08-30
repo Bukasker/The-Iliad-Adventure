@@ -22,6 +22,8 @@ public class Inventory : MonoBehaviour
     [Range(1f, 10f)]
     [SerializeField] private float itemThrowForce = 2;
 
+    private List<Item> listOfItems = new List<Item>();
+    private bool contain;
     #region Singeton
     void Awake()
     {
@@ -36,179 +38,67 @@ public class Inventory : MonoBehaviour
 
     public void Add(Item item)
     {
-        if (item.ItemType == ItemTypes.Weapon)
+        ChooseItemList(item);
+        bool itemAlredyInInvetory = false;
+        foreach(Item inventoryItem in listOfItems)
         {
-            if (weaponItems.Contains(item) && item.itemAmount < item.maxStack)
+            var allItemAmount = inventoryItem.itemAmount + item.itemAmount;
+            if (inventoryItem.Name == item.Name && (allItemAmount) <= inventoryItem.maxStack)
             {
-                ++item.itemAmount;
+               inventoryItem.itemAmount += item.itemAmount;
+               itemAlredyInInvetory = true;
             }
-            else if (weaponItems.Contains(item) && item.itemAmount == item.maxStack)
-            {
-                weaponItems.Add(item);
-            }
-            else
-            {
-                Debug.Log("ADDITEM");
-                weaponItems.Add(item);
-            }
-            onItemChangedCallback.Invoke();
         }
-        if (item.ItemType == ItemTypes.Apperance)
+        if (!itemAlredyInInvetory)
         {
-            if (apperanceItems.Contains(item) && item.itemAmount < item.maxStack)
+            if (item != null)
             {
-                ++item.itemAmount;
+                Item copyItem = Instantiate(item);
+                listOfItems.Add(copyItem);
             }
-            else if (apperanceItems.Contains(item) && item.itemAmount == item.maxStack)
-            {
-                apperanceItems.Add(item);
-            }
-            else
-            {
-                Debug.Log("ADDITEM");
-                apperanceItems.Add(item);
-            }
-            onItemChangedCallback.Invoke();
         }
-        if (item.ItemType == ItemTypes.Potion)
-        {
-            if (potionItems.Contains(item) && item.itemAmount < item.maxStack)
-            {
-                ++item.itemAmount;
-            }
-            else if (potionItems.Contains(item) && item.itemAmount == item.maxStack)
-            {
-                potionItems.Add(item);
-            }
-            else
-            {
-                Debug.Log("ADDITEM");
-                potionItems.Add(item);
-            }
-            onItemChangedCallback.Invoke();
-        }
-        if (item.ItemType == ItemTypes.Food)
-        {
-            if (foodItems.Contains(item) && item.itemAmount < item.maxStack)
-            {
-                ++item.itemAmount;
-            }
-            else if (foodItems.Contains(item) && item.itemAmount == item.maxStack)
-            {
-                foodItems.Add(item);
-            }
-            else
-            {
-                Debug.Log("ADDITEM");
-                foodItems.Add(item);
-            }
-            onItemChangedCallback.Invoke();
-        }
-        if (item.ItemType == ItemTypes.Book)
-        {
-            if (bookItems.Contains(item) && item.itemAmount < item.maxStack)
-            {
-                ++item.itemAmount;
-            }
-            else if (bookItems.Contains(item) && item.itemAmount == item.maxStack)
-            {
-                bookItems.Add(item);
-            }
-            else
-            {
-                Debug.Log("ADDITEM");
-                bookItems.Add(item);
-            }
-            onItemChangedCallback.Invoke();
-        }
-        if (item.ItemType == ItemTypes.Ingridiens)
-        {
-            if (ingridiensItems.Contains(item) && item.itemAmount < item.maxStack)
-            {
-                ++item.itemAmount;
-            }
-            else if (ingridiensItems.Contains(item) && item.itemAmount == item.maxStack)
-            {
-                ingridiensItems.Add(item);
-            }
-            else
-            {
-                Debug.Log("ADDITEM");
-                ingridiensItems.Add(item);
-            }
-            onItemChangedCallback.Invoke();
-        }
+        onItemChangedCallback.Invoke();
     }
     public void Remove(Item item)
     {
-        if (item.ItemType == ItemTypes.Weapon)
+        ChooseItemList(item);
+        ThrowItem(item, item.itemAmount);
+        listOfItems.Remove(item);
+        onItemChangedCallback.Invoke();
+    }
+    public void RemoveSlotItem(Item item)
+    {
+        ChooseItemList(item);
+        listOfItems.Remove(item);
+        onItemChangedCallback.Invoke();
+    }
+    public void ChooseItemList(Item item)
+    {
+        if(item != null)
         {
-            ThrowItem(item, item.itemAmount);
-            if (weaponItems.Contains(item) && item.itemAmount < item.maxStack)
+            switch (item.ItemType)
             {
-                item.itemAmount = 1;
+                case ItemTypes.Weapon:
+                    listOfItems = weaponItems;
+                    break;
+                case ItemTypes.Apperance:
+                    listOfItems = apperanceItems;
+                    break;
+                case ItemTypes.Potion:
+                    listOfItems = potionItems;
+                    break;
+                case ItemTypes.Food:
+                    listOfItems = foodItems;
+                    break;
+                case ItemTypes.Book:
+                    listOfItems = bookItems;
+                    break;
+                case ItemTypes.Ingridiens:
+                    listOfItems = ingridiensItems;
+                    break;
             }
-            Debug.Log("REMOVEITEM");
-            weaponItems.Remove(item);
-            onItemChangedCallback.Invoke();
-        }
-        if (item.ItemType == ItemTypes.Apperance)
-        {
-            ThrowItem(item, item.itemAmount);
-            if (apperanceItems.Contains(item) && item.itemAmount < item.maxStack)
-            {
-                item.itemAmount = 1;
-            }
-            Debug.Log("REMOVEITEM");
-            apperanceItems.Remove(item);
-            onItemChangedCallback.Invoke();
-        }
-        if (item.ItemType == ItemTypes.Potion)
-        {
-            ThrowItem(item, item.itemAmount);
-            if (potionItems.Contains(item) && item.itemAmount < item.maxStack)
-            {
-                item.itemAmount = 1;
-            }
-            Debug.Log("REMOVEITEM");
-            potionItems.Remove(item);
-            onItemChangedCallback.Invoke();
-        }
-        if (item.ItemType == ItemTypes.Food)
-        {
-            ThrowItem(item, item.itemAmount);
-            if (foodItems.Contains(item) && item.itemAmount < item.maxStack)
-            {
-                item.itemAmount = 1;
-            }
-            Debug.Log("REMOVEITEM");
-            foodItems.Remove(item);
-            onItemChangedCallback.Invoke();
-        }
-        if (item.ItemType == ItemTypes.Book)
-        {
-            ThrowItem(item, item.itemAmount);
-            if (bookItems.Contains(item) && item.itemAmount < item.maxStack)
-            {
-                item.itemAmount = 1;
-            }
-            Debug.Log("REMOVEITEM");
-            bookItems.Remove(item);
-            onItemChangedCallback.Invoke();
-        }
-        if (item.ItemType == ItemTypes.Ingridiens)
-        {
-            ThrowItem(item, item.itemAmount);
-            if (ingridiensItems.Contains(item) && item.itemAmount < item.maxStack)
-            {
-                item.itemAmount = 1;
-            }
-            Debug.Log("REMOVEITEM");
-            ingridiensItems.Remove(item);
-            onItemChangedCallback.Invoke();
         }
     }
-
     private void ThrowItem(Item item, int numberToDrop)
     {
         itemPickUp = itemToSpawn.GetComponent<ItemPickUp>();

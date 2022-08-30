@@ -12,13 +12,13 @@ namespace Assets.Scripts
         [SerializeField] private float _playerPositonModifer = 0.5f;
 
         // Events
-        public static event EventHandler<PunchedEnemyEventArgs> OnPlayerPunchedEnemy;
+     //   public static event EventHandler<PunchedEnemyEventArgs> OnPlayerPunchedEnemy;
         private void OnTriggerEnter(Collider col)
         {
             {
                 if (col.CompareTag("Enemy") == false) return;
 
-                OnPlayerPunchedEnemy?.Invoke(this, new PunchedEnemyEventArgs(gameObject, col.gameObject));
+              //  OnPlayerPunchedEnemy?.Invoke(this, new PunchedEnemyEventArgs(gameObject, col.gameObject));
 
                 Debug.Log($"{gameObject.name} collided with {col.name}");
 

@@ -8,6 +8,7 @@ public class Interactble : MonoBehaviour
     private SphereCollider _collider;
     [SerializeField] List<GameObject> _interactbleObjects;
     [SerializeField] private float _radius = 2.3f;
+
     private ItemPickUp itemPickUp;
     public GameObject FocusedItem;
     void Start()
@@ -46,7 +47,6 @@ public class Interactble : MonoBehaviour
     {
         _interactbleObjects.Remove(obj);
     }
-
     public void RemoveFirstItemOnList()
     {
         if (_interactbleObjects.Count != 0)

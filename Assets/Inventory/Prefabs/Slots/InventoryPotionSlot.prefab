@@ -101,7 +101,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4457158377963619806}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -127,11 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a36203caee3034e8260c078c81db11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPressed: 0
   icon: {fileID: 3614735782518510271}
   item: {fileID: 0}
-  ItemRemoved: 0
   stickToCursor: {fileID: 8962031629264889644}
+  _potionSlot: []
+  _slotIndex: 0
 --- !u!1 &7522434242670080268
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +389,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5903450837246051531}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5911466967513979772}
+        m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
+        m_MethodName: AddItemToPotionSlotButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8962031629264889644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba925143fc887964fba6d24365883c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 3614735782518510271}
-  IconGameObject: {fileID: 2884307082706484768}
+  _icon: {fileID: 3614735782518510271}
+  _iconGameObjcet: {fileID: 2884307082706484768}
   buttonPressed: 0
   iconIsMoved: 0

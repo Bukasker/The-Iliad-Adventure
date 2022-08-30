@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba925143fc887964fba6d24365883c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 8482789254589280905}
-  IconGameObject: {fileID: 8040591001800105494}
+  _icon: {fileID: 8482789254589280905}
+  _iconGameObjcet: {fileID: 8040591001800105494}
   buttonPressed: 0
   iconIsMoved: 0
 --- !u!1 &3456507209221280058
@@ -401,8 +401,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a36203caee3034e8260c078c81db11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPressed: 0
   icon: {fileID: 8482789254589280905}
   item: {fileID: 0}
-  ItemRemoved: 0
   stickToCursor: {fileID: 4309237447004620570}
+  _itemAmountText: {fileID: 2929942434194404879}
+  _potionSlot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

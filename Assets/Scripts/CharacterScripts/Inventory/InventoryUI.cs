@@ -6,20 +6,20 @@ public class InventoryUI : MonoBehaviour
 {
     private Inventory _inventory;
     public static InventoryUI instanceUI;
-    [SerializeField] private TextMeshProUGUI[] _itemAmountText;
+    private TextMeshProUGUI[] _itemAmountText;
 
-    [SerializeField] private TextMeshProUGUI[] _itemWeaponAmountText;
-    [SerializeField] private InventorySlot[] _weaponSlots;
-    [SerializeField] private TextMeshProUGUI[] _itemApperanceAmountText;
-    [SerializeField] private InventorySlot[] _apperanceSlots;
-    [SerializeField] private TextMeshProUGUI[] _itemPotionAmountText;
-    [SerializeField] private InventorySlot[] _potionSlots;
-    [SerializeField] private TextMeshProUGUI[] _itemFoodAmountText;
-    [SerializeField] private InventorySlot[] _foodSlots;
-    [SerializeField] private TextMeshProUGUI[] _itemBookAmountText;
-    [SerializeField] private InventorySlot[] _bookSlots;
-    [SerializeField] private TextMeshProUGUI[] _itemIngridienAmountText;
-    [SerializeField] private InventorySlot[] _ingridiensSlots;
+     private TextMeshProUGUI[] _itemWeaponAmountText;
+     private InventorySlot[] _weaponSlots;
+     private TextMeshProUGUI[] _itemApperanceAmountText;
+     private InventorySlot[] _apperanceSlots;
+     private TextMeshProUGUI[] _itemPotionAmountText;
+     private InventorySlot[] _potionSlots;
+     private TextMeshProUGUI[] _itemFoodAmountText;
+     private InventorySlot[] _foodSlots;
+     private TextMeshProUGUI[] _itemBookAmountText;
+     private InventorySlot[] _bookSlots;
+     private TextMeshProUGUI[] _itemIngridienAmountText;
+     private InventorySlot[] _ingridiensSlots;
 
 
     #region Singeton
@@ -52,7 +52,6 @@ public class InventoryUI : MonoBehaviour
     #endregion
     void UpdateUI()
     {
-
         for (var i = 0; i < _weaponSlots.Length; i++)
         {
             if (i < _inventory.weaponItems.Count)
@@ -62,17 +61,22 @@ public class InventoryUI : MonoBehaviour
                     _itemWeaponAmountText[i].enabled = true;
                     ChangeItemsAmountText();
                 }
+                else
+                {
+                    ChangeItemsAmountText();
+                    _itemWeaponAmountText[i].enabled = false;
+                }
                 _weaponSlots[i].AddItem(_inventory.weaponItems[i]);
 
             }
             else
             {
+                _weaponSlots[i].ClearSlot();
                 if (i < _inventory.weaponItems.Count)
                 {
                     ChangeItemsAmountText();
                 }
                 _itemWeaponAmountText[i].enabled = false;
-                _weaponSlots[i].ClearSlot();
             }
         }
         for (var i = 0; i < _apperanceSlots.Length; i++)
@@ -82,6 +86,11 @@ public class InventoryUI : MonoBehaviour
                 if (_inventory.apperanceItems[i].itemAmount >= 2)
                 {
                     _itemApperanceAmountText[i].enabled = true;
+                    ChangeItemsAmountText();
+                }
+                else
+                {
+                    _itemApperanceAmountText[i].enabled = false;
                     ChangeItemsAmountText();
                 }
                 _apperanceSlots[i].AddItem(_inventory.apperanceItems[i]);
@@ -106,6 +115,11 @@ public class InventoryUI : MonoBehaviour
                     _itemPotionAmountText[i].enabled = true;
                     ChangeItemsAmountText();
                 }
+                else
+                {
+                    ChangeItemsAmountText();
+                    _itemPotionAmountText[i].enabled = false;
+                }
                 _potionSlots[i].AddItem(_inventory.potionItems[i]);
             }
             else
@@ -126,6 +140,11 @@ public class InventoryUI : MonoBehaviour
                 if (_inventory.foodItems[i].itemAmount >= 2)
                 {
                     _itemFoodAmountText[i].enabled = true;
+                    ChangeItemsAmountText();
+                }
+                else
+                {
+                    _itemFoodAmountText[i].enabled = false;
                     ChangeItemsAmountText();
                 }
                 _foodSlots[i].AddItem(_inventory.foodItems[i]);
@@ -150,6 +169,11 @@ public class InventoryUI : MonoBehaviour
                     _itemBookAmountText[i].enabled = true;
                     ChangeItemsAmountText();
                 }
+                else
+                {
+                    _itemBookAmountText[i].enabled = false;
+                    ChangeItemsAmountText();
+                }
                 _bookSlots[i].AddItem(_inventory.bookItems[i]);
             }
             else
@@ -172,6 +196,11 @@ public class InventoryUI : MonoBehaviour
                     _itemIngridienAmountText[i].enabled = true;
                     ChangeItemsAmountText();
                 }
+                else
+                {
+                    _itemIngridienAmountText[i].enabled = false;
+                    ChangeItemsAmountText();
+                }
                 _ingridiensSlots[i].AddItem(_inventory.ingridiensItems[i]);
 
             }
@@ -185,7 +214,6 @@ public class InventoryUI : MonoBehaviour
                 _ingridiensSlots[i].ClearSlot();
             }
         }
-
     }
 
 

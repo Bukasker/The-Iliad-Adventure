@@ -23,6 +23,7 @@ TagManager:
   - itemFoodAmount
   - itemBookAmount
   - itemIngridiensAmount
+  - UsePotionSlot
   layers:
   - Default
   - TransparentFX

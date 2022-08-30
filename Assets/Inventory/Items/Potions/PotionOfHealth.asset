@@ -17,5 +17,8 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: e7e67bee73c1ec0429d3533ed7112573, type: 3}
   Value: 100
   Weight: 0.2
-  maxStack: 999
-  itemAmount: 4
+  maxStack: 99
+  itemAmount: 1
+  Mesh: {fileID: -4664382578460312087, guid: 9634e2e3bfbfeea4bbf158836fd6b223, type: 3}
+  Materials:
+  - {fileID: -8520552300825553901, guid: 9634e2e3bfbfeea4bbf158836fd6b223, type: 3}

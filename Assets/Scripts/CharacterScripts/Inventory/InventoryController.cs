@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.EventSystems;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
@@ -29,10 +26,9 @@ public class InventoryController : MonoBehaviour
     {
         inventory.SetActive(IsInventoryActive);
     }
-    #region InvetoryTypeButtons
+        #region InvetoryTypeButtons
     public void OnClickWeaponInventory()
     {
-        Debug.Log("nice");
         _weaponInventory.SetActive(true);
         _apperanceInventory.SetActive(false);
         _potionInventory.SetActive(false);

@@ -5,32 +5,34 @@ using UnityEngine.UI;
 
 public class StickToCursor : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public Image icon;
-    [SerializeField] private GameObject IconGameObject;
-    private Vector3 position;
-    private RectTransform rectTransform;
+    [SerializeField] private Image _icon;
+    [SerializeField] private GameObject _iconGameObjcet;
+
     public bool buttonPressed;
     public bool iconIsMoved = false;
+
     private Vector3 lastPos;
+    private Vector3 _positon;
+    private RectTransform _rectTransform;
 
     private void Awake()
     {
-        icon = GetComponent<Image>();
-        rectTransform = IconGameObject.GetComponent<RectTransform>();
-        position = rectTransform.localPosition;
-        lastPos = position;
+        _icon = GetComponent<Image>();
+        _rectTransform = _iconGameObjcet.GetComponent<RectTransform>();
+        _positon = _rectTransform.localPosition;
+        lastPos = _positon;
     }
     private void Update()
     {
         if (buttonPressed)
         {
-            IconGameObject.transform.position = Input.mousePosition;
+            _iconGameObjcet.transform.position = Input.mousePosition;
         }
         else
         {
-            rectTransform.localPosition = position;
+            _rectTransform.localPosition = _positon;
         }
-        if (lastPos != rectTransform.localPosition)
+        if (lastPos != _rectTransform.localPosition)
         {
             iconIsMoved = true;
         }
@@ -41,17 +43,13 @@ public class StickToCursor : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        rectTransform.SetAsLastSibling();
-        if (icon.sprite != null)
-        {
-            lastPos = rectTransform.localPosition;
-            buttonPressed = true;
-        }
+        lastPos = _rectTransform.localPosition;
+        buttonPressed = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (lastPos == rectTransform.localPosition)
+        if (lastPos == _rectTransform.localPosition)
         {
             iconIsMoved = false;
         }
