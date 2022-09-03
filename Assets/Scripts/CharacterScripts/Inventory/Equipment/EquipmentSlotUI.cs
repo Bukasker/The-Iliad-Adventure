@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class EquipmentSlotUI : MonoBehaviour
 {
-    [SerializeField] private Image basicIcon;
+    [SerializeField] private Sprite basicIcon;
     [SerializeField] private Image icon;
     public Item item;
 
@@ -15,6 +15,6 @@ public class EquipmentSlotUI : MonoBehaviour
     {
         item = null;
 
-        icon.sprite = basicIcon.sprite;
+        icon.sprite = basicIcon;
     }
 }

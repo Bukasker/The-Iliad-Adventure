@@ -9,47 +9,28 @@ public class CharacterStats : MonoBehaviour
     public int MaxHealth = 100;
     public int Lvl = 1;
     public int Gold;
+    public int basicArmorPenetraiton = 1;
 
-    public float currentHealth { get; private set; }
+    public float currentHealth;
 
     public Stat damage;
     public Stat armor;
-
-    [SerializeField] private Slider _slider;
+    [SerializeField] public GameObject _sliderGameObject;
+    [SerializeField] public Slider _slider;
 
     private void Awake()
     {
-        currentHealth = MaxHealth;
-        _slider.maxValue = MaxHealth;
-        _slider.minValue = MinHealth;
-        _slider.value = MaxHealth;
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
+        if(gameObject.name != "Player")
         {
-            TakeDamage(10);
+            _sliderGameObject.SetActive(false);
         }
+        _slider = _sliderGameObject.GetComponent<Slider>();
     }
-
-    public void TakeDamage(int damage)
-    {
-        damage -= armor.GetValue();
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
-
-        currentHealth -= damage;
-        _slider.value = currentHealth;
-        Debug.Log( transform.name + " takes " + damage +" damage.");
-
-       if(currentHealth <= 0)
-        {
-            Die();
-        }
-    }
+    public virtual void TakeDamage(int damage)
+    {}
     public virtual void Die()
     {
         //Character is dead
-        Debug.Log("Player died");
     }
 
 }

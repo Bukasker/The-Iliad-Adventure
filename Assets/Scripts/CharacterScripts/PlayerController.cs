@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 {
     private Animator _PlayerAnimator;
     private Rigidbody _rb;
-
     [SerializeField] private GameObject Player;
 
     [SerializeField] GameObject PlayerHands;
@@ -132,18 +131,15 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (Input.GetMouseButtonDown(0) && haveWeapon)
-        {
-            SwordAttack();
-        }
-        if (Input.GetMouseButtonDown(0) && !haveWeapon)
+        if (Input.GetMouseButtonDown(0))
         {
             Attack();
         }
-        if (Input.GetMouseButtonDown(1) && !haveWeapon)
+        if (Input.GetMouseButtonDown(1))
         {
             StrongAttack();
         }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             Pick();

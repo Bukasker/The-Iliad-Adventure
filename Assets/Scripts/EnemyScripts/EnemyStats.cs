@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStats : CharacterStats
+public class EnemyStats : CharacterStats
 {
-    void Start()
-    {
-        EquipmentMenager.Instance.onEquipmentChanged += OnEquipmentChanged;
-    }
+    EnemyController _enemyController;
+    PlayerStats _playerStats;
+    GameObject _player;
     private void Awake()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _playerStats = _player.GetComponent<PlayerStats>();
         _slider = _sliderGameObject.GetComponent<Slider>();
+        _sliderGameObject.SetActive(false);
         currentHealth = MaxHealth;
         _slider.maxValue = MaxHealth;
         _slider.minValue = MinHealth;
@@ -19,17 +21,20 @@ public class PlayerStats : CharacterStats
     }
     public override void TakeDamage(int damage)
     {
-        damage = damage - armor.GetValue() - basicArmorPenetraiton;
+        var LvlDiff = _playerStats.Lvl - this.Lvl;
+        damage = damage - (armor.GetValue()*((2*LvlDiff)/3)) - basicArmorPenetraiton;
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
         currentHealth -= damage;
         _slider.value = currentHealth;
 
-        if (gameObject.name != "Player" && currentHealth < MaxHealth)
+        Debug.Log(transform.name + " takes " + damage + " damage.");
+
+        if (currentHealth < MaxHealth)
         {
             _sliderGameObject.SetActive(true);
         }
-        else if (gameObject.name != "Player")
+        else
         {
             _sliderGameObject.SetActive(false);
         }
@@ -40,17 +45,11 @@ public class PlayerStats : CharacterStats
         }
         base.TakeDamage(damage);
     }
-    void OnEquipmentChanged(Equipment newItem,Equipment oldItem)
+    public override void Die()
     {
-        if(newItem != null)
-        {
-            armor.AddMofifier(newItem.armorModifier);
-            damage.AddMofifier(newItem.damageModifier);
-        }
-        if(oldItem != null)
-        {
-            armor.AddMofifier(oldItem.armorModifier);
-            damage.AddMofifier(oldItem.damageModifier);
-        }
+        base.Die();
+
+        _enemyController = GetComponent<EnemyController>();
+        _enemyController.isDead = true;
     }
 }
